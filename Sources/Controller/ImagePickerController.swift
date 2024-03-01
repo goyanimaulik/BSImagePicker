@@ -40,7 +40,8 @@ import Photos
 
     /// Title to use for button
     public var doneButtonTitle = Bundle(for: UIBarButtonItem.self).localizedString(forKey: "Done", value: "Done", table: "")
-
+    public var noCounterNeed = false
+    
     // MARK: Internal properties
     var assetStore: AssetStore
     var onSelection: ((_ asset: PHAsset) -> Void)?
@@ -149,8 +150,11 @@ import Photos
     }
     
     func updatedDoneButton() {
-        doneButton.title = assetStore.count > 0 ? doneButtonTitle + " (\(assetStore.count))" : doneButtonTitle
-      
+        if noCounterNeed {
+            doneButton.title = assetStore.count > 0 ? doneButtonTitle : doneButtonTitle
+        } else {
+            doneButton.title = assetStore.count > 0 ? doneButtonTitle + " (\(assetStore.count))" : doneButtonTitle
+        }
         doneButton.isEnabled = assetStore.count >= settings.selection.min
     }
 
