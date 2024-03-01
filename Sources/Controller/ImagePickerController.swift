@@ -40,6 +40,7 @@ import Photos
 
     /// Title to use for button
     public var doneButtonTitle = Bundle(for: UIBarButtonItem.self).localizedString(forKey: "Done", value: "Done", table: "")
+    // If you don't want to show selected counter
     public var noCounterNeed = false
     
     // MARK: Internal properties
